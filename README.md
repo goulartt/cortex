@@ -38,3 +38,9 @@ CHF,
 JPY,
 GBP,
 BRL
+
+There is another GET endpoint to produce a JMS Message to a queue usigin priority.
+The GET endpoint is available on:
+`localhost:8080/currency/produce`. The request payload is same as the first one, but this you can set the priority passing the query param `priority`, an int value between 1 and 9, 1 has less priority and 9 has the most priority.
+
+The server JMS is embbeded to the application and the app listen the queue named `convert-queue`, this queue named can be changed via application.properties.
