@@ -1,6 +1,8 @@
 # Currency Converter - Codex Challange
 
-This applications consumes an API from Banco Central do Brasil. The documentation for this external API is available [here](https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios).
+This application consumes an API from Banco Central do Brasil. The documentation for this external API is available [here](https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios).
+
+This application is capable of converting currencies from one currency to another based on the specific day's pricing.
 
 ## Installation
 
