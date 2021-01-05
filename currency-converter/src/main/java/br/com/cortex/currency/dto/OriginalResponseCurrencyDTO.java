@@ -7,9 +7,11 @@ import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class OriginalResponseCurrencyDTO implements Serializable {
 
 	private static final long serialVersionUID = 5915980743726939087L;

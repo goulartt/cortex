@@ -14,15 +14,18 @@ import br.com.cortex.currency.enums.CoinsEnum;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
-public class CurrencyClient {
+@Slf4j
+public class CurrencyFacade {
 	
 	private final ObjectMapper mapper;
 	
 	public Optional<OriginalResponseCurrencyDTO> getPrice(CoinsEnum origin, LocalDate referenceDate) {
 		try {
+			log.info("Calling external service to coin {} and date {}", origin.toString(), referenceDate);
 			JsonNode body = Unirest.get(
 					"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaAberturaOuIntermediario(codigoMoeda=@codigoMoeda,dataCotacao=@dataCotacao)?@codigoMoeda='{coin}'&@dataCotacao='{referenceDate}'&$format=json")
 					.routeParam("coin", origin.toString())
@@ -31,7 +34,7 @@ public class CurrencyClient {
 
 			return Optional.of(mapper.readValue(body.toString(), OriginalResponseCurrencyDTO.class));
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			log.error("Error proceeding getPrice: {}", e);
 		}
 		return Optional.empty();
 	}

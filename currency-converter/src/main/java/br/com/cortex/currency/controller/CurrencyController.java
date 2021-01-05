@@ -1,5 +1,6 @@
 package br.com.cortex.currency.controller;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,7 +25,7 @@ public class CurrencyController {
 	public CurrencyConvertedDTO convertCurrency(@RequestParam("dataCotacao") @DateTimeFormat(pattern = "MM-dd-yyyy") LocalDate referenceDate,
 			@RequestParam("moedaOrigem") CoinsEnum origin,
 			@RequestParam("moedaDestino") CoinsEnum destiny,
-			@RequestParam("valor") Double value) {
+			@RequestParam("valor") BigDecimal value) {
 				return currencyService.convert(origin, destiny, value, referenceDate);
 	
 	}
