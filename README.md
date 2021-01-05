@@ -1,5 +1,7 @@
 # Currency Converter - Codex Challange
 
+This applications consumes an API from Banco Central do Brasil. The documentation for this external API is available [here](https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios).
+
 ## Installation
 
 To be able to run the project you must have installed Java 11 and Redis in your machine.

@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.cortex.currency.dto.OriginalResponseCurrencyDTO;
 import br.com.cortex.currency.enums.CoinsEnum;
-import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

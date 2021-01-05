@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import br.com.cortex.currency.dto.CurrencyConvertedDTO;
 import br.com.cortex.currency.dto.OriginalResponseCurrencyDTO;
 import br.com.cortex.currency.dto.ResponseCurrencyDTO;
 import br.com.cortex.currency.enums.CoinsEnum;

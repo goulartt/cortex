@@ -47,10 +47,10 @@ public class CurrencyService {
 	private CurrencyConvertedDTO getFinalValue(CoinsEnum origin, CoinsEnum destiny, BigDecimal value,
 			Optional<OriginalResponseCurrencyDTO> originPrice, Optional<OriginalResponseCurrencyDTO> destinyPrice) {
 
-		if (CoinsEnum.BRL.equals(origin) && destinyPrice.get().getResponse().isPresent()) {
+		if (CoinsEnum.BRL.equals(origin) && destinyPrice.isPresent() && destinyPrice.get().getResponse().isPresent()) {
 			return new CurrencyConvertedDTO(value.divide(destinyPrice.get().getResponse().get().getSellPrice(), RoundingMode.HALF_UP));
 		}
-		if (CoinsEnum.BRL.equals(destiny) && originPrice.get().getResponse().isPresent()) {
+		if (CoinsEnum.BRL.equals(destiny) && originPrice.isPresent() && originPrice.get().getResponse().isPresent()) {
 			return new CurrencyConvertedDTO(originPrice.get().getResponse().get().getSellPrice().multiply(value));
 		}
 
