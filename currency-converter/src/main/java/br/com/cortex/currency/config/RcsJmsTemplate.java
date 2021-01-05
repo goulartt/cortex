@@ -11,6 +11,11 @@ import org.springframework.jms.core.JmsTemplate;
 
 public class RcsJmsTemplate extends JmsTemplate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1858434206464856305L;
+
 	public RcsJmsTemplate() {
 	}
 

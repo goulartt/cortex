@@ -1,6 +1,6 @@
 package br.com.cortex.currency.consumer;
 
-import org.springframework.messaging.Message;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import br.com.cortex.currency.dto.CurrencyConvertedDTO;
@@ -8,8 +8,6 @@ import br.com.cortex.currency.dto.CurrencyCriteriaDTO;
 import br.com.cortex.currency.service.CurrencyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.jms.annotation.JmsListener;
 
 @Component
 @RequiredArgsConstructor
