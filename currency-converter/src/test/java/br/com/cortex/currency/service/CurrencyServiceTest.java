@@ -44,7 +44,7 @@ public class CurrencyServiceTest {
 						.sellPrice(new BigDecimal(5)).build()))
 				.build()));
 		
-		CurrencyConvertedDTO convert = currencyService.convert(CoinsEnum.EUR, CoinsEnum.USD, new BigDecimal(1000), now);
+		var convert = currencyService.convert(CoinsEnum.EUR, CoinsEnum.USD, new BigDecimal(1000), now);
 		assertEquals(1200.0, convert.getValue().doubleValue());
 		
 	}
@@ -52,7 +52,7 @@ public class CurrencyServiceTest {
 	@Test
 	public void convertEURtoEURTest() {
 		LocalDate now = LocalDate.now();
-		CurrencyConvertedDTO convert = currencyService.convert(CoinsEnum.EUR, CoinsEnum.EUR, new BigDecimal(1000), now);
+		var convert = currencyService.convert(CoinsEnum.EUR, CoinsEnum.EUR, new BigDecimal(1000), now);
 		assertEquals(1000.0, convert.getValue().doubleValue());
 		
 	}
@@ -70,7 +70,7 @@ public class CurrencyServiceTest {
 						.sellPrice(new BigDecimal(10)).build()))
 				.build()));
 		
-		CurrencyConvertedDTO convert = currencyService.convert(CoinsEnum.BRL, CoinsEnum.EUR, new BigDecimal(1000), now);
+		var convert = currencyService.convert(CoinsEnum.BRL, CoinsEnum.EUR, new BigDecimal(1000), now);
 		assertEquals(100.0, convert.getValue().doubleValue());
 		
 	}
@@ -88,7 +88,7 @@ public class CurrencyServiceTest {
 						.sellPrice(new BigDecimal(10)).build()))
 				.build()));
 		
-		CurrencyConvertedDTO convert = currencyService.convert(CoinsEnum.EUR, CoinsEnum.BRL, new BigDecimal(1000), now);
+		var convert = currencyService.convert(CoinsEnum.EUR, CoinsEnum.BRL, new BigDecimal(1000), now);
 		assertEquals(10000.0, convert.getValue().doubleValue());
 		
 	}

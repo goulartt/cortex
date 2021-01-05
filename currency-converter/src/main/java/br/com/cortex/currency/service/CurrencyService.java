@@ -57,8 +57,8 @@ public class CurrencyService {
 		if (originPrice.isPresent() && originPrice.get().getResponse().isPresent() && destinyPrice.isPresent()
 				&& destinyPrice.get().getResponse().isPresent()) {
 
-			BigDecimal originValue = originPrice.get().getResponse().get().getSellPrice().multiply(value);
-			BigDecimal finalValue = originValue.divide(destinyPrice.get().getResponse().get().getSellPrice(), RoundingMode.HALF_UP);
+			var originValue = originPrice.get().getResponse().get().getSellPrice().multiply(value);
+			var finalValue = originValue.divide(destinyPrice.get().getResponse().get().getSellPrice(), RoundingMode.HALF_UP);
 			return new CurrencyConvertedDTO(finalValue);
 		}
 		

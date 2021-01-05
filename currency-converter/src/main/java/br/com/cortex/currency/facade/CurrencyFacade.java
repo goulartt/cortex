@@ -28,7 +28,7 @@ public class CurrencyFacade {
 	public Optional<OriginalResponseCurrencyDTO> getPrice(CoinsEnum origin, LocalDate referenceDate) {
 		try {
 			log.info("Calling external service to coin {} and date {}", origin.toString(), referenceDate);
-			JsonNode body = Unirest.get(
+			var body = Unirest.get(
 					"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaAberturaOuIntermediario(codigoMoeda=@codigoMoeda,dataCotacao=@dataCotacao)?@codigoMoeda='{coin}'&@dataCotacao='{referenceDate}'&$format=json")
 					.routeParam("coin", origin.toString())
 					.routeParam("referenceDate", referenceDate.format(DateTimeFormatter.ofPattern("MM-dd-yyyy")))

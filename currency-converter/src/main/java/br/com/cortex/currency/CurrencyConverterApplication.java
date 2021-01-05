@@ -1,7 +1,6 @@
 package br.com.cortex.currency;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import org.redisson.api.RedissonClient;
 import org.redisson.spring.cache.CacheConfig;
@@ -23,7 +22,7 @@ public class CurrencyConverterApplication {
 	
 	@Bean
 	public CacheManager cacheManager(RedissonClient redissonClient) {
-		Map<String, CacheConfig> config = new HashMap<>();
+		var config = new HashMap<String, CacheConfig>();
 		//Set time to live to 30 min
 		config.put("convert_currency", new CacheConfig(30000, 0));
 		return new RedissonSpringCacheManager(redissonClient,config);
