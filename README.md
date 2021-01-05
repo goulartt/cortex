@@ -16,7 +16,9 @@ P.S: Wheter you have credentials to access your redis service, you must provide 
 
 ## Usage
 
-The GET endpoint is available on:
+There are two endpoints, one to process a Sync GET Request and other to produce an Async JMS Message.
+
+The first GET endpoint is available on:
 `localhost:8080/currency/convert`
 
 You must provide the following query params:
@@ -39,7 +41,7 @@ JPY,
 GBP,
 BRL
 
-There is another GET endpoint to produce a JMS Message to a queue usigin priority.
+The second GET endpoint to produce a JMS Message to a queue usigin priority.
 The GET endpoint is available on:
 `localhost:8080/currency/produce`. The request payload is same as the first one, but this you can set the priority passing the query param `priority`, an int value between 1 and 9, 1 has less priority and 9 has the most priority.
 
