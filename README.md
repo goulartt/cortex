@@ -12,7 +12,7 @@ P.S: Wheter you have credentials to access your redis service, you must provide 
 
 ## Usage
 
-The endpoint is available on:
+The GET endpoint is available on:
 `localhost:8080/currency/convert`
 
 You must provide the following query params:
@@ -20,7 +20,7 @@ You must provide the following query params:
 - dataCotacao: MM-dd-YYYY
 - moedaOrigem
 - moedaDestino
-- valor: deve ser um valor double
+- valor: must be a double value
 
 The available coins to use are:
 DKK,
