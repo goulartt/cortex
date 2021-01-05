@@ -18,7 +18,19 @@ import lombok.RequiredArgsConstructor;
 public class CurrencyService {
 
 	private final CurrencyFacade client;
-
+	
+	/**
+	 * O método responsável pelo processamento de conversão de câmbio.
+	 * Se a moeda de origem for a mesma do destino, retorna o mesmo valor.
+	 * Se a moeda de origem for BRL, é retornado a divisão do cambio destino pelo valor.
+	 * Se a moeda de destino for BRL, é retornado a multiplicação do cambio origem pelo valor.
+	 * Se forem ambas moedas estrangeiras, a moeda origem é trazida para BRL e depois multiplicado pelo valor destino.
+	 * @param origin
+	 * @param destiny
+	 * @param value
+	 * @param referenceDate
+	 * @return CurrencyConvertedDTO com o valor convertido
+	 */
 	public CurrencyConvertedDTO convert(CoinsEnum origin, CoinsEnum destiny, BigDecimal value, LocalDate referenceDate) {
 		
 		if (origin.equals(destiny)) return new CurrencyConvertedDTO(value);
