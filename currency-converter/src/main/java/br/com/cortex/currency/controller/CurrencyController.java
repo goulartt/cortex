@@ -25,7 +25,6 @@ public class CurrencyController {
 			@RequestParam("moedaOrigem") CoinsEnum origin,
 			@RequestParam("moedaDestino") CoinsEnum destiny,
 			@RequestParam("valor") Double value) {
-				System.out.println(value);
 				return currencyService.convert(origin, destiny, value, referenceDate);
 	
 	}

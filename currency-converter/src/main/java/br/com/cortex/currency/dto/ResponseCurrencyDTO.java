@@ -8,6 +8,8 @@ import lombok.Data;
 
 @Data
 public class ResponseCurrencyDTO implements Serializable {
+
+	private static final long serialVersionUID = -6281914183581265334L;
 	
 	@JsonProperty("cotacaoCompra")
 	private double buyPrice;

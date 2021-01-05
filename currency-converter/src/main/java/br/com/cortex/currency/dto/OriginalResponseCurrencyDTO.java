@@ -11,6 +11,9 @@ import lombok.Data;
 
 @Data
 public class OriginalResponseCurrencyDTO implements Serializable {
+
+	private static final long serialVersionUID = 5915980743726939087L;
+	
 	@JsonProperty("@odata.context")
 	private String context;
 	private List<ResponseCurrencyDTO> value;

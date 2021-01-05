@@ -1,20 +1,14 @@
 package br.com.cortex.currency.service;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.cortex.currency.dto.CurrencyConvertedDTO;
 import br.com.cortex.currency.dto.OriginalResponseCurrencyDTO;
 import br.com.cortex.currency.enums.CoinsEnum;
 import br.com.cortex.currency.facade.CurrencyClient;
-import kong.unirest.JsonNode;
-import kong.unirest.Unirest;
 import lombok.RequiredArgsConstructor;
 
 
@@ -30,12 +24,29 @@ public class CurrencyService {
 		Optional<OriginalResponseCurrencyDTO> destinyPrice = client.getPrice(destiny, referenceDate);
 		
 		if (originPrice.isPresent() && originPrice.get().getResponse().isPresent() && destinyPrice.isPresent() && destinyPrice.get().getResponse().isPresent()) {
-			Double originValue = originPrice.get().getResponse().get().getSellPrice() * value;
-			Double finalValue = originValue / destinyPrice.get().getResponse().get().getSellPrice();
+			
+			Double finalValue = getFinalValue(origin, destiny, value, originPrice, destinyPrice);
+	
 			return CurrencyConvertedDTO.builder().value(finalValue).build();
 		}
 
 		return null;
+	}
+
+	private Double getFinalValue(CoinsEnum origin, CoinsEnum destiny, Double value,
+			Optional<OriginalResponseCurrencyDTO> originPrice, Optional<OriginalResponseCurrencyDTO> destinyPrice) {
+		
+		if (CoinsEnum.BRL.equals(origin) && destinyPrice.get().getResponse().isPresent()) {
+			return value * destinyPrice.get().getResponse().get().getSellPrice();
+		}
+		if (CoinsEnum.BRL.equals(destiny) && originPrice.get().getResponse().isPresent()) {
+			return originPrice.get().getResponse().get().getSellPrice() * value;
+		}
+		
+		Double originValue = originPrice.get().getResponse().get().getSellPrice() * value;
+		Double finalValue = originValue / destinyPrice.get().getResponse().get().getSellPrice();
+		
+		return finalValue;
 	}
 
 }
