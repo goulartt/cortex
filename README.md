@@ -46,3 +46,9 @@ The GET endpoint is available on:
 `localhost:8080/currency/produce`. The request payload is same as the first one, but this you can set the priority passing the query param `priority`, an int value between 1 and 9, 1 has less priority and 9 has the most priority.
 
 The server JMS is embbeded to the application and the app listen the queue named `convert-queue`, this queue named can be changed via application.properties.
+
+## Architecture
+
+The following diagram represents the application architecture. We have two endpoints, one to produce an Async JMS message and other to process a Sync Get Message. Both of them consume the same service, if it is cached it is retrived from redis, else it will request to an external API.
+
+![](image.jpg)
