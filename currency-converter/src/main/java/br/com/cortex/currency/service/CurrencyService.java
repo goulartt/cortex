@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import br.com.cortex.currency.dto.CurrencyConvertedDTO;
@@ -31,6 +32,7 @@ public class CurrencyService {
 	 * @param referenceDate
 	 * @return CurrencyConvertedDTO com o valor convertido
 	 */
+	@Cacheable(value = "convert_currency", key = "#origin+'-'+#destiny+'-'+#value")
 	public CurrencyConvertedDTO convert(CoinsEnum origin, CoinsEnum destiny, BigDecimal value, LocalDate referenceDate) {
 		
 		if (origin.equals(destiny)) return new CurrencyConvertedDTO(value);

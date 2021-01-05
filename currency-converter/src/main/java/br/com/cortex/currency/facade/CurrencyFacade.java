@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,6 +24,7 @@ public class CurrencyFacade {
 	
 	private final ObjectMapper mapper;
 	
+	@Cacheable(value = "convert_currency", key = "#origin+'-'+#referenceDate")
 	public Optional<OriginalResponseCurrencyDTO> getPrice(CoinsEnum origin, LocalDate referenceDate) {
 		try {
 			log.info("Calling external service to coin {} and date {}", origin.toString(), referenceDate);
