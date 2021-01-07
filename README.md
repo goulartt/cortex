@@ -1,4 +1,4 @@
-# Currency Converter - Codex Challange
+# Currency Converter - Cortex Challange
 
 This application consumes an API from Banco Central do Brasil. The documentation for this external API is available [here](https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios).
 
